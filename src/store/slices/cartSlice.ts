@@ -1,4 +1,4 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface CartState {
   products: number[];
@@ -19,13 +19,17 @@ export const cartSlice = createSlice({
     },
     addToFavorite: (state, action: PayloadAction<number>) => {
       state.favorite.includes(action.payload)
-        ? (state.favorite = [
-            ...state.favorite.filter(product => product !== action.payload),
-          ])
-        : (state.favorite = [...state.favorite, action.payload]);
+          ? (state.favorite = state.favorite.filter(product => product !== action.payload))
+          : (state.favorite = [...state.favorite, action.payload]);
+    },
+    removeFromFavorite: (state, action: PayloadAction<number>) => {
+      state.favorite = state.favorite.filter(product => product !== action.payload);
+    },
+    clearFavorites: (state) => {
+      state.favorite = [];
     },
   },
 });
 
-export const {addToCart, addToFavorite} = cartSlice.actions;
+export const { addToCart, addToFavorite, removeFromFavorite, clearFavorites } = cartSlice.actions;
 export default cartSlice.reducer;
