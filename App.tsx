@@ -7,7 +7,6 @@ import StackNavigator from "./src/navigation/StackNavigator.tsx";
 
 function App(): React.JSX.Element {
   return (
-    <>
       <Provider store={store}>
           <SafeAreaProvider>
               <NavigationContainer>
@@ -15,7 +14,6 @@ function App(): React.JSX.Element {
               </NavigationContainer>
           </SafeAreaProvider>
       </Provider>
-    </>
   );
 }
 
